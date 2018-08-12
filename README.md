@@ -29,74 +29,74 @@ Development Contributors:
 
 Events Calendar: 
 -------------------------
-soma	140206
-ripon	140230
-anika	140232
+	soma	140206
+	ripon	140230
+	anika	140232
 
 News:
 -------------------------
-riya	140215
+	riya	140215
 
 Result:
 -------------------------
-tauhid	140202
-nionta	140224
-eklasur	130212
+	tauhid	140202
+	nionta	140224
+	eklasur	130212
 
 
 Question Archive:
 -----------------------
-shamima	140221
-subrota	140236
-joy	140239
+	shamima	140221
+	subrota	140236
+	joy	140239
 
 
 File Management:
 -----------------------
-rifat	140227
-imran	140231
-zaminur	140240
+	rifat	140227
+	imran	140231
+	zaminur	140240
 
 Course Registration:
 ------------------------
-akash	140204
-rabbi	140210
-suman	140220
+	akash	140204
+	rabbi	140210
+	suman	140220
 
 
 Forum:
 ------------------
-nazia	140208
-fahim	140217
-arpon	140218
+	nazia	140208
+	fahim	140217
+	arpon	140218
 
 
 Club:
 --------------
-hasib	140228
-mushfiq	140237
+	hasib	140228
+	mushfiq	140237
 
 
 Video Comments:
 --------------------
-sohel	130209
-prince	130219
-koushik	130221
+	sohel	130209
+	prince	130219
+	koushik	130221
 
 
 Attendance:
 ------------------
-pappu	140225
+	pappu	140225
 
 
 Project Archive: 
 -------------------
-farhana	140203
-tania	140241
+	farhana	140203
+	tania	140241
 
 
 Survey:
 ---------------
-milon	120203
-mahin	110217
-noman	120209
+	milon	120203
+	mahin	110217
+	noman	120209
