@@ -6,9 +6,10 @@
 
 
 Team Members: 
-	A. K. M. Fahim Rahman (160215)
-	Moushan Naznin (160226)
-	Tausif Ahmed Turzo (160207)
+
+		A. K. M. Fahim Rahman (160215)
+		Moushan Naznin (160226)
+		Tausif Ahmed Turzo (160207)
 
 
 
