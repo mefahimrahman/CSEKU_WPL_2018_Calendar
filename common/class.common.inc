@@ -256,6 +256,8 @@ class PermissionUtil{
     public static $VIDEO_COMMENT_U='VIDEO_COMMENT_U';
     public static $VIDEO_COMMENT_D='VIDEO_COMMENT_D';
 
+    #CALENDAR
+
     public static $CALENDAR_C='CALENDAR_C';
     public static $CALENDAR_R='CALENDAR_R';
     public static $CALENDAR_U='CALENDAR_U';
@@ -357,8 +359,9 @@ class PageUtil{
     public static $VIDEO_COMMENT='video_comment.php';
     public static $VIDEO_SEARCH='video_search.php';
 
-    //job
-    public static $JOB='search_job.php';    
+    #CALENDAR
+    public static $CALENDAR='calendar.php';
+    public static $ADDEVENT='addevent.php';    
    
 }
 
@@ -499,8 +502,11 @@ class RouteUtil{
          self::$s_Routes[PageUtil::$YEAR]  =   "modules/registration/ui/view.year.inc";
 
          //JOB
-         self::$s_Routes[PageUtil::$JOB]  =   "modules/job/ui/view.job.inc";
+         //self::$s_Routes[PageUtil::$JOB]  =   "modules/job/ui/view.job.inc";
 
+         //CALENDAR
+         self::$s_Routes[PageUtil::$CALENDAR]  =   "modules/calendar/ui/view.calendar.inc";
+         self::$s_Routes[PageUtil::$ADDEVENT]  =   "modules/calendar/ui/view.addevent.inc";
       
     }
 
@@ -625,6 +631,10 @@ class MiddlewareUtil{
          self::$s_Routes[PageUtil::$VIDEO]   =  PageUtil::$LOGIN ;
          self::$s_Routes[PageUtil::$VIDEO_COMMENT]   =  PageUtil::$LOGIN ;
          self::$s_Routes[PageUtil::$VIDEO_SEARCH]   =  PageUtil::$LOGIN ;
+
+
+         /*self::$s_Routes[PageUtil::$CALENDAR]   =  PageUtil::$LOGIN ;
+         self::$s_Routes[PageUtil::$ADDEVENT]   =  PageUtil::$LOGIN ;*/
          
    
     }

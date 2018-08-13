@@ -875,6 +875,7 @@
 					<Permission>FILE_D</Permission>	
 				</Permissions>
 			</Menu>
+
 <!-- CALENDAR -->
 	<Menu>
 		<ParentMenu></ParentMenu>

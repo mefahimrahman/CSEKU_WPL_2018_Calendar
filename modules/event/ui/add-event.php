@@ -23,7 +23,7 @@ $page->execute(['id' => $_GET['id']]);
 $page = $page->fetch(PDO::FETCH_ASSOC);
 }
 
- ?>
+?>
 
 
 

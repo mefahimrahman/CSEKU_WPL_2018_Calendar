@@ -29,8 +29,7 @@ define('MODULES_ROUTINE',MODULES.'/routine/');
 define('MODULES_SURVEY',MODULES.'/survey/');
 define('MODULES_USER',MODULES.'/user/');
 define('MODULES_VIDEO',MODULES.'/video/');
-define('MODULES_JOB',MODULES.'/job/');
-define('MODULES_JOB',MODULES.'/calendar/');
+define('MODULES_CALENDAR',MODULES.'/calendar/');
 
 
 ?>
