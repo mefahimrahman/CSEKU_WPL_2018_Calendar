@@ -875,36 +875,48 @@
 					<Permission>FILE_D</Permission>	
 				</Permissions>
 			</Menu>
-
-<!-- Job -->
+<!-- CALENDAR -->
 	<Menu>
 		<ParentMenu></ParentMenu>
-		<Title>Job</Title>
+		<Title>Calendar</Title>
 		<Permissions>
-			<Permission>JOB_C</Permission>
-			<Permission>JOB_R</Permission>
-			<Permission>JOB_U</Permission>
-			<Permission>JOB_D</Permission>									
+			<Permission>CALENDAR_C</Permission>
+			<Permission>CALENDAR_R</Permission>
+			<Permission>CALENDAR_U</Permission>												
+			<Permission>CALENDAR_D</Permission>
 		</Permissions>			
 	</Menu>
 
+		<Menu>
+			<ParentMenu>Calendar</ParentMenu>
+			<Title>Calendar Related</Title>
+			<Permissions>
+				<Permission>CALENDAR_C</Permission>
+				<Permission>CALENDAR_R</Permission>
+				<Permission>CALENDAR_U</Permission>												
+				<Permission>CALENDAR_D</Permission>												
+			</Permissions>
+		</Menu>
 			<Menu>
-				<ParentMenu>Job</ParentMenu>
-				<Title>Manage Job</Title>
+				<ParentMenu>Calendar Related</ParentMenu>
+				<Title>View Calendar</Title>
+				<Link>calendar.php</Link>
 				<Permissions>
-					<Permission>JOB_C</Permission>
-					<Permission>JOB_U</Permission>									
-					<Permission>JOB_D</Permission>	
-					<Permission>JOB_R</Permission>
+					<Permission>CALENDAR_R</Permission>
+					<Permission>CALENDAR_C</Permission>
+					<Permission>CALENDAR_U</Permission>											
+					<Permission>CALENDAR_D</Permission>	
 				</Permissions>
 			</Menu>
 
-				<Menu>
-					<ParentMenu>Manage Job</ParentMenu>
-					<Title>Search Job</Title>
-					<Link>search_job.php</Link>
-					<Permissions>
-						<Permission>JOB_R</Permission>
-					</Permissions>
-				</Menu>
+			<Menu>
+				<ParentMenu>Calendar Related</ParentMenu>
+				<Title>Add Events</Title>
+				<Link>addevent.php</Link>
+				<Permissions>
+					<Permission>CALENDAR_C</Permission>
+					<Permission>CALENDAR_U</Permission>											
+					<Permission>CALENDAR_D</Permission>	
+				</Permissions>
+			</Menu>
 </Menus>

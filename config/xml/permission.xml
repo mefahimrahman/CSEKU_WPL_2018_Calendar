@@ -762,29 +762,29 @@
 		<category>VIDEO COMMENT</category>
 	</permission>
 
-	<!-- JOB Category -->
+	<!-- Calendar Category -->
 	<permission>
-		<id>JOB_C</id>
-		<name>JOB_C</name>
-		<category>JOB</category>
+		<id>CALENDAR_C</id>
+		<name>CALENDAR_C</name>
+		<category>CALENDAR</category>
 	</permission>
 
 	<permission>
-		<id>JOB_R</id>
-		<name>JOB_R</name>
-		<category>JOB</category>
+		<id>CALENDAR_R</id>
+		<name>CALENDAR_R</name>
+		<category>CALENDAR</category>
 	</permission>
 
 	<permission>
-		<id>JOB_U</id>
-		<name>JOB_U</name>
-		<category>JOB</category>
+		<id>CALENDAR_U</id>
+		<name>CALENDAR_U</name>
+		<category>CALENDAR</category>
 	</permission>
 
 	<permission>
-		<id>JOB_D</id>
-		<name>JOB_D</name>
-		<category>JOB</category>
+		<id>CALENDAR_D</id>
+		<name>CALENDAR_D</name>
+		<category>CALENDAR</category>
 	</permission>
 
 

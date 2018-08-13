@@ -256,6 +256,11 @@ class PermissionUtil{
     public static $VIDEO_COMMENT_U='VIDEO_COMMENT_U';
     public static $VIDEO_COMMENT_D='VIDEO_COMMENT_D';
 
+    public static $CALENDAR_C='CALENDAR_C';
+    public static $CALENDAR_R='CALENDAR_R';
+    public static $CALENDAR_U='CALENDAR_U';
+    public static $CALENDAR_D='CALENDAR_D';
+
 
 }
 
