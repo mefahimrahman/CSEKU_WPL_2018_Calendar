@@ -1,4 +1,3 @@
-
 <?php 
 	
     include_once COMMON.'class.common.inc';
