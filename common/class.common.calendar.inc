@@ -4,6 +4,8 @@ class Calendar{
     private $_ID;
     private $_EventTitle;
     private $_EventDate;
+    private $_eventStartTime;
+    private $_eventEndTime;
     private $_Discipline;
 
 
@@ -30,6 +32,22 @@ class Calendar{
 
     public function getEventDate () {
         return $this->_EventDate;
+    }
+
+    public function seteventStartTime ( $eventStartTime ) {
+        $this->_eventStartTime = $eventStartTime;
+    }
+
+    public function geteventStartTime () {
+        return $this->_eventStartTime;
+    }
+
+        public function seteventEndTime ( $eventEndTime ) {
+        $this->_eventEndTime = $eventEndTime;
+    }
+
+    public function geteventEndTime () {
+        return $this->_eventEndTime;
     }
 
     public function setDiscipline ( $Discipline ) {
