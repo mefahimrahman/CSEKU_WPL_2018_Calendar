@@ -257,6 +257,8 @@ $rows = $db->query("
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="resources/css/calendar.css">
+    <script src="resources/js/jquery.min.js"></script>
+    <script src="resources/js/calendar.bootstrap.min.js"></script>
 </head>
 <body>
 
