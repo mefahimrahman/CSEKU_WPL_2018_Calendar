@@ -6,126 +6,269 @@
 
 	echo "This Page is currently showing the calendar of another module CSEKU_18_Task and its slightly modified. This is used only for testing purpose. Later 'Day view/Week view/Month view' will be added.";
 ?>
+<?php
+
+date_default_timezone_set("Asia/Dhaka");
+class ShowCalendar {
+
+    public function __construct(){
+        $this->naviHref = htmlentities($_SERVER['PHP_SELF']);
+    }
 
 
-	    <script>
-		   function goLastMonth(month,year)
-		   {
-			   if(month==1)
-			   {
-				   --year;
-				   month=13;
-			   }
-			   document.location.href="<?php $_SERVER['PHP_SELF'];?>?month="+(month-1)+"&year="+year;
-			   
-		   }
-		   function goNextMonth(month,year)
-		   {
-			   if(month==12)
-			   {
-				   ++year;
-				   month=0;
-			   }
-			   document.location.href="<?php $_SERVER['PHP_SELF'];?>?month="+(month+1)+"&year="+year;   
-		   }  
-		</script> 
+    /*private $dayLabels = array("Sun","Tue","Wed","Thu","Fri","Sat","Mon");*/
+    private $dayLabels = array("Sun","Mon","Tue","Wed","Thu","Fri","Sat");
+    private $currentYear=0;
+    private $currentMonth=0;
+    private $currentDay=0;
+    private $currentDate=null;
+    private $daysInMonth=0;
+    private $naviHref= null;  
+    /*public $eko;*/
 
-	 
-	<body>
-	    <?php
-		if(isset($_GET['day']))
-		{  
-	        $day=$_GET['day'];
-		}
-		else
-		{
-		    $day=date("j");
-		}
-		if(isset($_GET['month']))
-		{  
-	        $month=$_GET['month'];
-		}
-		else
-		{
-		    $month=date("n");
-		}
-		if(isset($_GET['year']))
-		{  
-	        $year=$_GET['year'];
-		}
-		else
-		{
-		    $year=date("Y");
-		}
-		
-			//calender variable
-			$currentTimeStamp=strtotime("$year-$month-$day");
-			$monthName=date("F",$currentTimeStamp);
-			$numDays=date("t",$currentTimeStamp);
-			$counter=0;
-		?>
-		<div>
-	        <table border="0">
-			    <tr>
-				    <td align="left"><input type='button' value='<--previous' name='previousbutton' onclick="goLastMonth(<?php echo $month.", ".$year; ?>)"></td>
+   /*protected $toDay=0;*/
+    /*private $toDay=0;*/
 
-					<td colspan='5' align="center"><strong><?php echo $monthName.", ".$year; ?></strong></td>
 
-					<td align="right"><input type='button' value='next-->' name='nextbutton' onclick="goNextMonth(<?php echo $month.", ".$year; ?>)"></td>
-				</tr>
+    public function show() {
+        /*$year  == null;
+        $month == null;*/
 
-				<tr bgcolor="#00FF00">
-				    <td width='50px' height='25px' align="center">Sunday</td>
-					<td width='50px' height='25px' align="center">Monday</td>
-					<td width='50px' height='25px' align="center">Tueday</td>
-					<td width='50px' height='25px' align="center">Wednesday</td>
-					<td width='50px' height='25px' align="center">Thuesday</td>
-					<td width='50px' height='25px' align="center" bgcolor="#ff0000">Friday</td>
-					<td width='50px' height='25px' align="center" bgcolor="#ff0000">Satarday
-					</td>
-				</tr>
+        if (isset($_GET['year'])) {
+            $year = $_GET['year'];
+        } else {
+            $year = date("Y", time());
+        }
 
-				<?php 	echo "<tr>";
-				       	$day1=date("j");
-					   		for($i=1;$i<$numDays+1;$i++,$counter++)
-							{
-						   		$timeStamp=strtotime("$year-$month-$i");
-						   		if($i==1)
-						   		{
-									$firstDay=date("w",$timeStamp);
-						       		for($j=0;$j<$firstDay;$j++,$counter++)
-							   		{
-							   			echo "<td>&nbsp;</td>"; //blank space
-							   		}
-						   		}
+        if (isset($_GET['month'])) {
+            $month = $_GET['month'];
+        } else {
+            $month = date("m", time());
+        }
 
-						   		if($counter %7 == 0)
-								{
-							   		echo "</tr><tr>";
-						   		}
-						   
+/*       $rows = $db->query("
+          SELECT *
+          FROM events
+      ")->fetchAll(PDO::FETCH_ASSOC);*/
 
-						   		if($i == $day1)
-						   		{
-						   			echo "<td width='250px' height='50px' align='center' bgcolor = '#00FF00'>".$i."</td>";
-						   		}
-						   		else
-						   		{
-						   			echo "<td width='250px' height='50px' align='center' >". "<strong>" .$i. "</strong>" ."</td>";
-						   		}
-					   		}
-						echo "</tr>";
-				?>
-			</table>
-		</div>
 
-		<div>
-			<div>
-				<table>
-					<tr align="center">
-						<td align="center">Event List</td>
-					</tr>
+/*        if(null==$year&&isset($_GET['year'])){
+            $year = $_GET['year'];
+        }else if(null==$year){
+            $year = date("Y",time());
+        }
 
-				</table>
-			</div>
-		</div>
+        if(null==$month&&isset($_GET['month'])){
+            $month = $_GET['month'];
+        }else if(null==$month){
+            $month = date("m",time());
+        }
+*/
+        
+        $this->currentYear=$year;
+        $this->currentMonth=$month;
+        $this->daysInMonth=$this->_daysInMonth($month,$year);
+        $content='<div id="calendar">'.
+            '<div class="box">'.
+            $this->_createNavi().
+            '</div>'.
+            '<div class="box-content">'.
+            '<ul class="label">'.$this->_createLabels().'</ul>';
+        $content.='<div class="clear"></div>';
+        $content.='<ul class="dates">';
+
+        $weeksInMonth = $this->_weeksInMonth($month,$year);
+        //  weeks in a month
+        for( $i=0; $i<$weeksInMonth+1; $i++ ){
+
+            // days in a week
+            for($j=1;$j<=7;$j++){
+                $content.=$this->_showDay($i*7+$j);            
+
+               /*if($this->currentDate == date('Y-m-d'))
+               {
+               $finalDisplay = ' '.$cellContent.' ';
+               }*/
+            }
+        }
+
+        $content.='</ul>';
+        $content.='<div class="clear"></div>';
+        $content.='</div>';
+
+        $content.='</div>';
+        return $content;
+    }
+
+
+
+    private function _showDay($cellNumber)
+    {
+
+        if($this->currentDay==0){
+            $firstDayOfTheWeek = date('N',strtotime($this->currentYear.'-'.$this->currentMonth.'-02'));
+            if(intval($cellNumber) == intval($firstDayOfTheWeek)){
+                $this->currentDay=1;
+            }
+        }
+
+        if( ($this->currentDay!=0)&&($this->currentDay<=$this->daysInMonth) ){
+            $this->currentDate = date('d-m-Y',strtotime($this->currentYear.'-'.$this->currentMonth.'-'.($this->currentDay)));
+            $cellContent = $this->currentDay;
+            $this->currentDay++;
+        }else{
+
+            $this->currentDate =null;
+            $cellContent=null;
+        }
+
+        if($this->currentDate == date('d-m-Y'))
+        {
+        /*$finalDisplay = ' '.$cellContent.' ';*/
+        $toDay = 1;
+        /*$today=$this->$toDay;*/
+        } else { $toDay=0;}
+
+        if($this->currentDate == date('d-m-Y'))
+        {
+        /*$finalDisplay = ' '.$cellContent.' ';*/
+        $toDay = 1;
+        /*$today=$this->$toDay;*/
+        } else { $toDay=0;}
+$db = new PDO('mysql:host=localhost;dbname=calendar', 'root', '');
+$rows = $db->query("
+  SELECT *
+  FROM events
+")->fetchAll(PDO::FETCH_ASSOC);
+/*$eko = array();*/
+/*foreach ($rows as $row):
+    if($this->currentDate == $row['date']){
+           $eko['test'] = " ".$row['title'].": ".$row['description']."<br/>";
+             }
+ endforeach;*/
+
+
+        $op = '<li id="li-'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
+            ($cellContent==null?'mask':'').($toDay==1?'today':'').'">';
+
+        $op.= ' <div class="showTitle float-left">';
+    $x=1;
+    $more=0;
+    foreach ($rows as $row):
+        if($this->currentDate == $row['date']){
+            if($x<=4){        
+               $op.= '<a href="event.php?url='.$row['title'].'">';
+               $op.= "$x. ".$row['shorttitle']."<br/>";
+               $op.= '</a>';
+            } else{
+            if($more!=1){
+               $op.= '<a href="day-view.php?date='.$this->currentDate.'">';
+               $op.= '<p>more</p>';
+               $op.= '</a>';
+               $more=1;
+               }
+            }
+           $x++;
+             }
+    endforeach;
+
+        $op.='</div>';
+//day-view.php?date=23-04-2017
+
+               $op.= '<span class="celcontnt float-right"><a href="day-view.php?date='.$this->currentDate.'">'.$cellContent.'</a></span></li>';
+
+    return $op;
+
+
+    }
+
+
+    private function _createNavi(){
+
+        $nextMonth = $this->currentMonth==12?1:intval($this->currentMonth)+1;
+        $nextYear = $this->currentMonth==12?intval($this->currentYear)+1:$this->currentYear;
+        $preMonth = $this->currentMonth==1?12:intval($this->currentMonth)-1;
+        $preYear = $this->currentMonth==1?intval($this->currentYear)-1:$this->currentYear;
+
+        return
+            '<div class="header">'.
+            '<a class="prev" href="'.$this->naviHref.'?month='.sprintf('%02d',$preMonth).'&year='.$preYear.'">Prev</a>'.
+            '<span class="title">'.date('Y M',strtotime($this->currentYear.'-'.$this->currentMonth.'-1')).'</span>'.
+            '<a class="next" href="'.$this->naviHref.'?month='.sprintf("%02d", $nextMonth).'&year='.$nextYear.'">Next</a>'.
+            '</div>';
+    }
+
+
+    private function _createLabels(){
+
+        $content='';
+        foreach($this->dayLabels as $index=>$label){
+            $content.='<li class="'.($label==6?'end title':'start title').' title">'.$label.'</li>';
+
+        }
+
+        return $content;
+    }
+
+
+
+    private function _weeksInMonth($month=null,$year=null){
+
+        if( null==($year) ) {
+            $year =  date("Y",time());
+        }
+
+        if(null==($month)) {
+            $month = date("m",time());
+        }
+
+        // find number of days in this month
+        $daysInMonths = $this->_daysInMonth($month,$year);
+        $numOfweeks = ($daysInMonths%7==0?0:1) + intval($daysInMonths/7);
+        $monthEndingDay= date('N',strtotime($year.'-'.$month.'-'.$daysInMonths));
+        $monthStartDay = date('N',strtotime($year.'-'.$month.'-01'));
+
+        if($monthEndingDay<$monthStartDay){
+            $numOfweeks++;
+        }
+        return $numOfweeks;
+    }
+
+    /**
+     *
+     * calculate number of days in a particular month
+     *
+     */
+    
+    private function _daysInMonth($month=null,$year=null){
+
+        if(null==($year))
+            $year =  date("Y",time());
+
+        if(null==($month))
+            $month = date("m",time());
+
+        return date('t',strtotime($year.'-'.$month.'-01'));
+    }
+
+}
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="resources/css/calendar.css">
+</head>
+<body>
+
+	<?php
+
+			$calendar = new ShowCalendar();
+			echo $calendar->show();
+
+	?>
+
+</body>
+</html>
