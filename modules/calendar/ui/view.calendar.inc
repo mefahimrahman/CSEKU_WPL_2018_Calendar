@@ -2,9 +2,6 @@
 	
     include_once COMMON.'class.common.inc';
     include_once COMMON.'class.common.calendar.inc';
-
-
-	echo "This Page is currently showing the calendar of another module CSEKU_18_Task and its slightly modified. This is used only for testing purpose. Later 'Day view/Week view/Month view' will be added.";
 ?>
 <?php
 
