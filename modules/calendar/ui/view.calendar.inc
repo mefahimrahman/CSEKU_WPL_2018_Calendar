@@ -1,273 +1,116 @@
-<?php 
-	
-    include_once COMMON.'class.common.inc';
-    include_once COMMON.'class.common.calendar.inc';
-?>
 <?php
-
-date_default_timezone_set("Asia/Dhaka");
-class ShowCalendar {
-
-    public function __construct(){
-        $this->naviHref = htmlentities($_SERVER['PHP_SELF']);
-    }
-
-
-    /*private $dayLabels = array("Sun","Tue","Wed","Thu","Fri","Sat","Mon");*/
-    private $dayLabels = array("Sun","Mon","Tue","Wed","Thu","Fri","Sat");
-    private $currentYear=0;
-    private $currentMonth=0;
-    private $currentDay=0;
-    private $currentDate=null;
-    private $daysInMonth=0;
-    private $naviHref= null;  
-    /*public $eko;*/
-
-   /*protected $toDay=0;*/
-    /*private $toDay=0;*/
-
-
-    public function show() {
-        /*$year  == null;
-        $month == null;*/
-
-        if (isset($_GET['year'])) {
-            $year = $_GET['year'];
-        } else {
-            $year = date("Y", time());
-        }
-
-        if (isset($_GET['month'])) {
-            $month = $_GET['month'];
-        } else {
-            $month = date("m", time());
-        }
-
-/*       $rows = $db->query("
-          SELECT *
-          FROM events
-      ")->fetchAll(PDO::FETCH_ASSOC);*/
-
-
-/*        if(null==$year&&isset($_GET['year'])){
-            $year = $_GET['year'];
-        }else if(null==$year){
-            $year = date("Y",time());
-        }
-
-        if(null==$month&&isset($_GET['month'])){
-            $month = $_GET['month'];
-        }else if(null==$month){
-            $month = date("m",time());
-        }
-*/
-        
-        $this->currentYear=$year;
-        $this->currentMonth=$month;
-        $this->daysInMonth=$this->_daysInMonth($month,$year);
-        $content='<div id="calendar">'.
-            '<div class="box">'.
-            $this->_createNavi().
-            '</div>'.
-            '<div class="box-content">'.
-            '<ul class="label">'.$this->_createLabels().'</ul>';
-        $content.='<div class="clear"></div>';
-        $content.='<ul class="dates">';
-
-        $weeksInMonth = $this->_weeksInMonth($month,$year);
-        //  weeks in a month
-        for( $i=0; $i<$weeksInMonth+1; $i++ ){
-
-            // days in a week
-            for($j=1;$j<=7;$j++){
-                $content.=$this->_showDay($i*7+$j);            
-
-               /*if($this->currentDate == date('Y-m-d'))
-               {
-               $finalDisplay = ' '.$cellContent.' ';
-               }*/
-            }
-        }
-
-        $content.='</ul>';
-        $content.='<div class="clear"></div>';
-        $content.='</div>';
-
-        $content.='</div>';
-        return $content;
-    }
-
-
-
-    private function _showDay($cellNumber)
-    {
-
-        if($this->currentDay==0){
-            $firstDayOfTheWeek = date('N',strtotime($this->currentYear.'-'.$this->currentMonth.'-02'));
-            if(intval($cellNumber) == intval($firstDayOfTheWeek)){
-                $this->currentDay=1;
-            }
-        }
-
-        if( ($this->currentDay!=0)&&($this->currentDay<=$this->daysInMonth) ){
-            $this->currentDate = date('d-m-Y',strtotime($this->currentYear.'-'.$this->currentMonth.'-'.($this->currentDay)));
-            $cellContent = $this->currentDay;
-            $this->currentDay++;
-        }else{
-
-            $this->currentDate =null;
-            $cellContent=null;
-        }
-
-        if($this->currentDate == date('d-m-Y'))
-        {
-        /*$finalDisplay = ' '.$cellContent.' ';*/
-        $toDay = 1;
-        /*$today=$this->$toDay;*/
-        } else { $toDay=0;}
-
-        if($this->currentDate == date('d-m-Y'))
-        {
-        /*$finalDisplay = ' '.$cellContent.' ';*/
-        $toDay = 1;
-        /*$today=$this->$toDay;*/
-        } else { $toDay=0;}
-$db = new PDO('mysql:host=localhost;dbname=calendar', 'root', '');
-$rows = $db->query("
-  SELECT *
-  FROM events
-")->fetchAll(PDO::FETCH_ASSOC);
-/*$eko = array();*/
-/*foreach ($rows as $row):
-    if($this->currentDate == $row['date']){
-           $eko['test'] = " ".$row['title'].": ".$row['description']."<br/>";
-             }
- endforeach;*/
-
-
-        $op = '<li id="li-'.$this->currentDate.'" class="'.($cellNumber%7==1?' start ':($cellNumber%7==0?' end ':' ')).
-            ($cellContent==null?'mask':'').($toDay==1?'today':'').'">';
-
-        $op.= ' <div class="showTitle float-left">';
-    $x=1;
-    $more=0;
-    foreach ($rows as $row):
-        if($this->currentDate == $row['date']){
-            if($x<=4){        
-               $op.= '<a href="event.php?url='.$row['title'].'">';
-               $op.= "$x. ".$row['shorttitle']."<br/>";
-               $op.= '</a>';
-            } else{
-            if($more!=1){
-               $op.= '<a href="day-view.php?date='.$this->currentDate.'">';
-               $op.= '<p>more</p>';
-               $op.= '</a>';
-               $more=1;
-               }
-            }
-           $x++;
-             }
-    endforeach;
-
-        $op.='</div>';
-//day-view.php?date=23-04-2017
-
-               $op.= '<span class="celcontnt float-right"><a href="day-view.php?date='.$this->currentDate.'">'.$cellContent.'</a></span></li>';
-
-    return $op;
-
-
-    }
-
-
-    private function _createNavi(){
-
-        $nextMonth = $this->currentMonth==12?1:intval($this->currentMonth)+1;
-        $nextYear = $this->currentMonth==12?intval($this->currentYear)+1:$this->currentYear;
-        $preMonth = $this->currentMonth==1?12:intval($this->currentMonth)-1;
-        $preYear = $this->currentMonth==1?intval($this->currentYear)-1:$this->currentYear;
-
-        return
-            '<div class="header">'.
-            '<a class="prev" href="'.$this->naviHref.'?month='.sprintf('%02d',$preMonth).'&year='.$preYear.'">Prev</a>'.
-            '<span class="title">'.date('Y M',strtotime($this->currentYear.'-'.$this->currentMonth.'-1')).'</span>'.
-            '<a class="next" href="'.$this->naviHref.'?month='.sprintf("%02d", $nextMonth).'&year='.$nextYear.'">Next</a>'.
-            '</div>';
-    }
-
-
-    private function _createLabels(){
-
-        $content='';
-        foreach($this->dayLabels as $index=>$label){
-            $content.='<li class="'.($label==6?'end title':'start title').' title">'.$label.'</li>';
-
-        }
-
-        return $content;
-    }
-
-
-
-    private function _weeksInMonth($month=null,$year=null){
-
-        if( null==($year) ) {
-            $year =  date("Y",time());
-        }
-
-        if(null==($month)) {
-            $month = date("m",time());
-        }
-
-        // find number of days in this month
-        $daysInMonths = $this->_daysInMonth($month,$year);
-        $numOfweeks = ($daysInMonths%7==0?0:1) + intval($daysInMonths/7);
-        $monthEndingDay= date('N',strtotime($year.'-'.$month.'-'.$daysInMonths));
-        $monthStartDay = date('N',strtotime($year.'-'.$month.'-01'));
-
-        if($monthEndingDay<$monthStartDay){
-            $numOfweeks++;
-        }
-        return $numOfweeks;
-    }
-
-    /**
-     *
-     * calculate number of days in a particular month
-     *
-     */
-    
-    private function _daysInMonth($month=null,$year=null){
-
-        if(null==($year))
-            $year =  date("Y",time());
-
-        if(null==($month))
-            $month = date("m",time());
-
-        return date('t',strtotime($year.'-'.$month.'-01'));
-    }
-
+// Set your timezone!!
+date_default_timezone_set('Asia/Dhaka');
+// Get prev & next month
+if (isset($_GET['ym'])) {
+    $ym = $_GET['ym'];
+} else {
+    // This month
+    $ym = date('Y-m');
 }
-
+// Check format
+$timestamp = strtotime($ym . '-01');  // the first day of the month
+if ($timestamp === false) {
+    $ym = date('Y-m');
+    $timestamp = strtotime($ym . '-01');
+}
+// Today (Format:2018-08-8)
+$today = date('Y-m-j');
+// Title (Format:August, 2018)
+$title = date('F, Y', $timestamp);
+// Create prev & next month link
+$prev = date('Y-m', strtotime('-1 month', $timestamp));
+$next = date('Y-m', strtotime('+1 month', $timestamp));
+// Number of days in the month
+$day_count = date('t', $timestamp);
+// 1:Mon 2:Tue 3: Wed ... 7:Sun
+$str = date('N', $timestamp);
+// Array for calendar
+$weeks = [];
+$week = '';
+// Add empty cell(s)
+$week .= str_repeat('<td></td>', $str - 1);
+for ($day = 1; $day <= $day_count; $day++, $str++) {
+    $date = $ym . '-' . $day;
+    if ($today == $date) {
+        $week .= '<td class="today">';
+    } else {
+        $week .= '<td>';
+    }
+    $week .= $day . '</td>';
+    // Sunday OR last day of the month
+    if ($str % 7 == 0 || $day == $day_count) {
+        // last day of the month
+        if ($day == $day_count && $str % 7 != 0) {
+            // Add empty cell(s)
+            $week .= str_repeat('<td></td>', 7 - $str % 7);
+        }
+        $weeks[] = '<tr>' . $week . '</tr>';
+        $week = '';
+    }
+}
 ?>
-
-<!DOCTYPE html>
-<html>
 <head>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="resources/css/calendar.css">
-    <script src="resources/js/jquery.min.js"></script>
-    <script src="resources/js/calendar.bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <title>PHP Calendar</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <style>
+        .container {
+            font-family: 'Montserrat', sans-serif;
+            margin: 60px auto;
+        }
+        .list-inline {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .title {
+            font-weight: bold;
+            font-size: 26px;
+        }
+        th {
+            text-align: center;
+        }
+        td {
+            height: 100px;
+        }
+        th:nth-of-type(6), td:nth-of-type(6) {
+            color: red;
+        }
+        th:nth-of-type(7), td:nth-of-type(7) {
+            color: red;
+        }
+        .today {
+            background-color: orange;
+        }
+    </style>
 </head>
 <body>
-
-	<?php
-
-			$calendar = new ShowCalendar();
-			echo $calendar->show();
-
-	?>
-
-</body>
-</html>
+    <div class="container">
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="?ym=<?= $prev; ?>" class="btn btn-link">&lt; prev</a></li>
+            <li class="list-inline-item"><span class="title"><?= $title; ?></span></li>
+            <li class="list-inline-item"><a href="?ym=<?= $next; ?>" class="btn btn-link">next &gt;</a></li>
+        </ul>
+        <p class="text-right"><a href="calendar.php">Today</a></p>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                    <th>Sun</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    foreach ($weeks as $week) {
+                        echo $week;
+                    }
+                ?>
+            </tbody>
+        </table>
+    </div>
