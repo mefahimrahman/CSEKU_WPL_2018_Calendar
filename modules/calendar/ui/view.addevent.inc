@@ -2,6 +2,7 @@
 
 	include_once COMMON.'class.common.inc';
     include_once COMMON.'class.common.calendar.inc';
+    include_once 'blade/view.addevent.blade.inc';
 	
 	/*echo "This Page is For Adding Event"."<br><br>";*/
 ?>
@@ -48,11 +49,11 @@
               	<div class="col-sm-6">	
 						<select name="selectDiscipline" class="form-control" required>
 							<option selected >Select Discipline</option>
-							<option>Everyone</option>
-							<option>Architecture</option>
-							<option>CSE</option>
-							<option>BBA</option>
-							<option>URP</option>
+							<option value="0">Everyone</option>
+							<option value="1">Architecture</option>
+							<option value="2">CSE</option>
+							<option value="3">BBA</option>
+							<option value="4">URP</option>
 
 						</select>
 				</div>
@@ -67,7 +68,7 @@
 
 	</div>
 	
-<div id="toastME">Some Text Message..</div>
+
 </div>
 
 </div>

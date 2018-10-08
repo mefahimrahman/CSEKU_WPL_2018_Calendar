@@ -1,5 +1,5 @@
 <?php 
-class Calendar{
+class AddEvent{
     
     private $_ID;
     private $_EventTitle;

@@ -103,5 +103,5 @@ function printToast(message) {
     //document.getElementById("toastME").innerHTML=message;
     //x.className = "show";
     //setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-    alert(message);
+    // alert(message);
 }
