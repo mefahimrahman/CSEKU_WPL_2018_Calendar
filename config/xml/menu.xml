@@ -809,72 +809,7 @@
 			</Menu>
 
 
-<!-- File -->
-
-	<Menu>
-		<ParentMenu></ParentMenu>
-		<Title>File Management</Title>
-		<Permissions>
-			<Permission>FILE_C</Permission>
-			<Permission>FILE_R</Permission>
-			<Permission>FILE_U</Permission>												
-			<Permission>FILE_D</Permission>
-		</Permissions>			
-	</Menu>
-
-		<Menu>
-			<ParentMenu>File Management</ParentMenu>
-			<Title>File Related</Title>
-			<Permissions>
-				<Permission>FILE_C</Permission>
-				<Permission>FILE_R</Permission>
-				<Permission>FILE_U</Permission>												
-				<Permission>FILE_D</Permission>												
-			</Permissions>
-		</Menu>
-			<Menu>
-				<ParentMenu>File Related</ParentMenu>
-				<Title>Manage Files</Title>
-				<Link>file.php</Link>
-				<Permissions>
-					<Permission>FILE_C</Permission>
-					<Permission>FILE_U</Permission>												
-					<Permission>FILE_D</Permission>	
-				</Permissions>
-			</Menu>
-			<Menu>
-				<ParentMenu>File Related</ParentMenu>
-				<Title>File Notifications</Title>
-				<Link>file_notify.php</Link>
-				<Permissions>
-					<Permission>FILE_C</Permission>
-					<Permission>FILE_R</Permission>
-					<Permission>FILE_U</Permission>												
-					<Permission>FILE_D</Permission>	
-				</Permissions>
-			</Menu>			
-			<Menu>
-				<ParentMenu>File Related</ParentMenu>
-				<Title>File Status</Title>
-				<Link>file_status.php</Link>
-				<Permissions>
-					<Permission>FILE_C</Permission>
-					<Permission>FILE_R</Permission>
-					<Permission>FILE_U</Permission>												
-					<Permission>FILE_D</Permission>	
-				</Permissions>
-			</Menu>
-			<Menu>
-				<ParentMenu>File Related</ParentMenu>
-				<Title>Share File</Title>
-				<Link>file_share.php</Link>
-				<Permissions>
-					<Permission>FILE_C</Permission>
-					<Permission>FILE_R</Permission>
-					<Permission>FILE_U</Permission>												
-					<Permission>FILE_D</Permission>	
-				</Permissions>
-			</Menu>
+<!-- File Managenment -->
 
 <!-- CALENDAR -->
 	<Menu>
