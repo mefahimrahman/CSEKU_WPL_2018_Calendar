@@ -54,6 +54,7 @@
 							<option value="2">CSE</option>
 							<option value="3">BBA</option>
 							<option value="4">URP</option>
+							<option value="5">FWT</option>
 
 						</select>
 				</div>
