@@ -855,4 +855,30 @@
 					<Permission>CALENDAR_D</Permission>	
 				</Permissions>
 			</Menu>
+
+			<!-- for showing events -->
+
+			<Menu>
+				<ParentMenu>Calendar Related</ParentMenu>
+				<Title></Title>
+				<Link>insert.php</Link>
+				<Permissions>
+					<Permission>CALENDAR_C</Permission>
+					<Permission>CALENDAR_R</Permission>
+					<Permission>CALENDAR_U</Permission>											
+					<Permission>CALENDAR_D</Permission>	
+				</Permissions>
+			</Menu>
+
+			<Menu>
+				<ParentMenu>Calendar Related</ParentMenu>
+				<Title></Title>
+				<Link>load.php</Link>
+				<Permissions>
+					<Permission>CALENDAR_C</Permission>
+					<Permission>CALENDAR_R</Permission>
+					<Permission>CALENDAR_U</Permission>											
+					<Permission>CALENDAR_D</Permission>	
+				</Permissions>
+			</Menu>
 </Menus>
