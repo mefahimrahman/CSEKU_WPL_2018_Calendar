@@ -362,9 +362,6 @@ class PageUtil{
     #CALENDAR
     public static $CALENDAR='calendar.php';
     public static $ADDEVENT='addevent.php'; 
-    public static $load='insert.php';
-    public static $insert='load.php';
-   
 }
 
 class RouteUtil{
@@ -509,9 +506,6 @@ class RouteUtil{
          //CALENDAR
          self::$s_Routes[PageUtil::$CALENDAR]  =   "modules/calendar/ui/view.calendar.inc";
          self::$s_Routes[PageUtil::$ADDEVENT]  =   "modules/calendar/ui/view.addevent.inc";
-         self::$s_Routes[PageUtil::$load]  =   "modules/calendar/ui/insert.php";
-         self::$s_Routes[PageUtil::$insert]  =   "modules/calendar/ui/load.php";
-      
     }
 
     public static function getInstance() {
