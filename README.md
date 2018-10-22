@@ -1,15 +1,16 @@
 # CSEKU_WPL_2018_Calendar
 	We are working on the Calendar Module.
-	This is new Job. 
-	Our goal is to make a calendar by which every one in the university can see their all events by using this system. 
+	This is a new Job. 
+	Our goal is to make a calendar by which everyone in the university can see their all events by using this system. 
 
 
 
 Team Members: 
 
 		A. K. M. Fahim Rahman (160215)
-		Moushan Naznin (160226)
 		Tausif Ahmed Turzo (160207)
+		Moushan Naznin (160226)
+		
 
 
 
