@@ -19,13 +19,13 @@ Class AddEventDAO {
 	public function AddEvent($Event){
 
 		$EventTitle=$Event->getEventTitle();
-		$EventDate=$Event->getEventDate();
+		/*$EventDate=$Event->getEventDate();*/
 		$eventStartTime=$Event->geteventStartTime();
 		$eventEndTime=$Event->geteventEndTime();
 		$Discipline=$Event->getDiscipline();
 		
-		$SQL = "INSERT INTO ecal_calendar(EventTitle,EventDate,eventStartTime,eventEndTime,Discipline) 
-		 	VALUES('$EventTitle','$EventDate','$eventStartTime','$eventEndTime','$Discipline')";
+		$SQL = "INSERT INTO events(title,start_event,end_event,discipline) 
+		 	VALUES('$EventTitle','$eventStartTime','$eventEndTime','$Discipline')";
 
 
 		$SQL=$this->_DB->doQuery($SQL); 	

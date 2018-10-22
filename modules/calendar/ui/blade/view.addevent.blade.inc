@@ -18,7 +18,7 @@ if(isset($_POST['request']))
 	$AddEvent = new AddEvent();	
 
 	$AddEvent->setEventTitle(strtolower($_DB->secureInput($_POST['eventName']))); 
-	$AddEvent->setEventDate($_DB->secureInput($_POST['eventDate']));
+	/*$AddEvent->setEventDate($_DB->secureInput($_POST['eventDate']));*/
     $AddEvent->seteventStartTime($_DB->secureInput($_POST['eventStartTime']));
     $AddEvent->seteventEndTime($_DB->secureInput($_POST['eventEndTime'])); 
 	$AddEvent->setDiscipline(strtolower($_DB->secureInput($_POST['selectDiscipline']))); 

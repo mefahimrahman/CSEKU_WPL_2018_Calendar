@@ -23,24 +23,24 @@
 			  	</div>
 			</div>
 	
-			<div class="form-group">
+			<!-- <div class="form-group">
               	<label class="control-label col-sm-4" for="txtFirstName">Event Date:</label>
               	<div class="col-sm-6">  		
 				<input type="date" name="eventDate" class="form-control" required/>
 				</div>
-			</div>
+			</div> -->
 
 			<div class="form-group">
-              	<label class="control-label col-sm-4" for="txtFirstName">Start Time:</label>
+              	<label class="control-label col-sm-4" for="txtFirstName">Event Start Time:</label>
               	<div class="col-sm-6">  		
-				<input type="time" name="eventStartTime" class="form-control" required/>
+				<input type="datetime-local" name="eventStartTime" class="form-control" required/>
 				</div>
 			</div>
 
 			<div class="form-group">
-              	<label class="control-label col-sm-4" for="txtFirstName">End Time:</label>
+              	<label class="control-label col-sm-4" for="txtFirstName">Event End Time:</label>
               	<div class="col-sm-6">  		
-				<input type="time" name="eventEndTime" class="form-control" required/>
+				<input type="datetime-local" name="eventEndTime" class="form-control" required/>
 				</div>
 			</div>
 			
