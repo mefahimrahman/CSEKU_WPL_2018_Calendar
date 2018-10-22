@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="resources/css/fullcalendar.css" />
-<link rel="stylesheet" href="resources/css/bootstrap.css" />
 <script src="resources/css/jquery.min.js"></script>
 <script src="resources/css/jquery-ui.min.js"></script>
 <script src="resources/css/moment.min.js"></script>
@@ -51,5 +50,8 @@
  
   <br>
   
-   <div id="calendar"></div>
+  <div class="container">
+    <div id="calendar"></div>
+  </div>
+   
      
