@@ -1,20 +1,17 @@
 # CSEKU_WPL_2018_Calendar
-	We are working on the Calendar Module.
-	This is new Job. 
-	Our goal is to make a calendar by which every one in the university can see their all events by using this system. 
+	
+		We are working on the Calendar Module.
+		This is a new Job. 
+		Our goal is to make a calendar by which everyone in the university can see their all events by using this system. 
 
 
 
 Team Members: 
 
 		A. K. M. Fahim Rahman (160215)
-		Moushan Naznin (160226)
 		Tausif Ahmed Turzo (160207)
-
-
-
-
-
+		Moushan Naznin (160226)
+	
 
 Digital University
 
@@ -22,7 +19,14 @@ Copyright of this content is reserved by the founders, various contributors and 
 
 version 1.0
 
-Founder, Framework and Architecture: Dr. KAZI MASUDUL ALAM, Assistant Professor, CSE Discipline, Khulna University
+Founder, Framework and Architecture:
+
+		Dr. KAZI MASUDUL ALAM 
+		Assistant Professor, 
+		CSE Discipline, 
+		Khulna University,
+		Khulna - 9208
+
 
 Development Contributors:
 --------------------------------
