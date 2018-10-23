@@ -5,12 +5,6 @@
 		This is a new Job. 
 		Our goal is to make a calendar by which everyone in the university can see their all events by using this system. 
 
-	We are working on the Calendar Module.
-	This is a new Job. 
-	Our goal is to make a calendar by which everyone in the university can see their all events by using this system. 
-
-
-
 
 Team Members: 
 
