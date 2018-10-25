@@ -1,5 +1,7 @@
 <?php
-class User{
+include_once '../common/class.common.user.inc';
+
+/*class User{
 
     private $_ID;
 
@@ -10,7 +12,7 @@ class User{
     public function getID () {
         return $this->_ID;
     }
-}
+}*/
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -34,7 +36,7 @@ $data = array();
 /*fetch the user id to show their discipline events*/
 $ID = $_SESSION['globalUser']->getID();
 
-$SQL3 = "SELECT RoleID FROM ums_user_role WHERE ID = '$ID'";
+$SQL3 = "SELECT RoleID FROM ums_user_role WHERE UserID = '$ID'";
 $statement3 = $conn->query($SQL3);
 $result3 = $statement3->fetch_assoc();
 $result3 = $result3['RoleID'];

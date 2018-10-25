@@ -2,15 +2,13 @@
 <script src="resources/css/jquery.min.js"></script>
 <script src="resources/css/jquery-ui.min.js"></script>
 <script src="resources/css/moment.min.js"></script>
-<!-- <script src="resources/css/fullcalendar.min.js"></script>
- -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
 
-
-<!-- showing the calendar -->
+<!-- Calendar Show -->
 <script>   
+/*showing the jason data sent from database*/
   $(document).ready(function() {
-    $.ajax({
+   /* $.ajax({
         url: './resources/t.php',
         type: 'POST',
         success: function(data){
@@ -19,7 +17,9 @@
         error: function(data){
             alert(data);
         }
-    });
+    });*/
+
+/*showing the events in calendar*/
    var calendar = $('#calendar').fullCalendar({
     editable:true,
     header:{
