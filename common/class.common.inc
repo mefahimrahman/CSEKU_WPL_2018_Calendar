@@ -362,6 +362,7 @@ class PageUtil{
     #CALENDAR
     public static $CALENDAR='calendar.php';
     public static $ADDEVENT='addevent.php'; 
+    public static $EVENTS='events.php';
 }
 
 class RouteUtil{
@@ -506,6 +507,7 @@ class RouteUtil{
          //CALENDAR
          self::$s_Routes[PageUtil::$CALENDAR]  =   "modules/calendar/ui/view.calendar.inc";
          self::$s_Routes[PageUtil::$ADDEVENT]  =   "modules/calendar/ui/view.addevent.inc";
+         self::$s_Routes[PageUtil::$EVENTS]  =   "modules/calendar/ui/view.events.inc";
     }
 
     public static function getInstance() {

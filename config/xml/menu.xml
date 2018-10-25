@@ -838,8 +838,8 @@
 				<Title>View Calendar</Title>
 				<Link>calendar.php</Link>
 				<Permissions>
-					<Permission>CALENDAR_R</Permission>
 					<Permission>CALENDAR_C</Permission>
+					<Permission>CALENDAR_R</Permission>
 					<Permission>CALENDAR_U</Permission>											
 					<Permission>CALENDAR_D</Permission>	
 				</Permissions>
@@ -851,6 +851,18 @@
 				<Link>addevent.php</Link>
 				<Permissions>
 					<Permission>CALENDAR_C</Permission>
+					<Permission>CALENDAR_U</Permission>											
+					<Permission>CALENDAR_D</Permission>	
+				</Permissions>
+			</Menu>
+
+			<Menu>
+				<ParentMenu>Calendar Related</ParentMenu>
+				<Title>Manage Events</Title>
+				<Link>events.php</Link>
+				<Permissions>
+					<Permission>CALENDAR_C</Permission>
+					<Permission>CALENDAR_R</Permission>
 					<Permission>CALENDAR_U</Permission>											
 					<Permission>CALENDAR_D</Permission>	
 				</Permissions>
