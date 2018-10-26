@@ -18,7 +18,7 @@
 		<form method="post" class="form-horizontal">
 
 			<div class="form-group">
-              	<label class="control-label col-sm-4" for="txtUniversityID">Event Title:</label>
+              	<label class="control-label col-sm-4" for="eventName">Event Title:</label>
               	<div class="col-sm-6">
               	<input type="text" name="eventName" class="form-control" placeholder="New Event" required/>
 			  	</div>
@@ -32,14 +32,14 @@
 			</div> -->
 
 			<div class="form-group">
-              	<label class="control-label col-sm-4" for="txtFirstName">Event Start Time:</label>
+              	<label class="control-label col-sm-4" for="eventStartTime">Event Start Time:</label>
               	<div class="col-sm-6">  		
 				<input type="datetime-local" name="eventStartTime" class="form-control" required/>
 				</div>
 			</div>
 
 			<div class="form-group">
-              	<label class="control-label col-sm-4" for="txtFirstName">Event End Time:</label>
+              	<label class="control-label col-sm-4" for="eventEndTime">Event End Time:</label>
               	<div class="col-sm-6">  		
 				<input type="datetime-local" name="eventEndTime" class="form-control" required/>
 				</div>
