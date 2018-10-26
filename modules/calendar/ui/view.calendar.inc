@@ -21,11 +21,14 @@
 
 /*showing the events in calendar*/
    var calendar = $('#calendar').fullCalendar({
+  /*  boolean. default: true,*/
     editable:true,
+    navLinks: true,
     header:{
      left:'prev,next today',
      center:'title',
-     right:'month,agendaWeek,agendaDay'
+     right:'month,agendaWeek,agendaDay',
+
     },
     events:'./resources/t.php',
     selectable:true,
